@@ -16,6 +16,11 @@
     height:850px;
     display:block;
  }
+ .example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
 
  #table2{
   overflow-y:scroll;
@@ -25,4 +30,12 @@
 
  ::-webkit-scrollbar {
   display: none;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
 }
