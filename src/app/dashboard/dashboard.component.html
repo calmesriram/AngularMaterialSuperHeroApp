@@ -1,12 +1,10 @@
 <div class="container-fluid">
   <div class="row">
-
     <div class="col-sm-8" id="table">
       <div class="row">
         <div class="col-sm-3" *ngFor="let item of getallDetailarray;">
           <div class="card" (click)="selecteditem(item);">
-            <!-- <img class="card-img-top" src="{{ item.images.lg}}" alt="Card image cap"> -->
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" src="{{ item.images.md}}" alt="Card image cap">            
             <div class="card-body">
               <h5 class="card-title">{{ item.name}}</h5>
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
@@ -21,7 +19,7 @@
     </div>
 
 
-    <div class="col-sm-4">
+    <div class="col-sm-4" id="table2">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar
@@ -29,85 +27,113 @@
           <mat-card-title>{{selectedArrayDetails.name}}</mat-card-title>
           <mat-card-subtitle>{{selectedArrayDetails.appearance.gender}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <!-- <img class="img-fluid" src="https://material.angular.io/assets/img/examples/shiba2.jpg"  alt="Chania" width="260" height="145">  -->
-        <!-- <img mat-card-image src="{{selectedArrayDetails.images.sm}}" alt="Photo of a Shiba Inu"> -->
+        <img mat-card-image src="{{selectedArrayDetails.images.md}}" height="250">
         <mat-card-content>
-          <!-- <div class="row">
-            <mat-card-subtitle>Biography</mat-card-subtitle>
-            <br>
-            <dt>Aliases</dt>
-            <span> {{ selectedArrayDetails.biography.aliases[0] }} </span>
-            <dt>Alignment</dt>
-            <dd> {{ selectedArrayDetails.biography.alignment }} </dd>
-            <dt>AlterEgos</dt>
-            <dd> {{ selectedArrayDetails.biography.alterEgos }} </dd>
-            <dt>FirstAppearance</dt>
-            <dd> {{ selectedArrayDetails.biography.firstAppearance }} </dd>
-            <dt>FullName</dt>
-            <dd> {{ selectedArrayDetails.biography.fullName }} </dd>
-            <dt>PlaceOfBirth</dt>
-            <dd> {{ selectedArrayDetails.biography.placeOfBirth }} </dd>
-            <dt>Publisher</dt>
-            <dd> {{ selectedArrayDetails.biography.publisher }} </dd>
-          </div>
-          <br> -->
           <div class="row">
-            <mat-card-subtitle>Appearance</mat-card-subtitle>
-            <div class="col-sm-6">              
-
+            <!-- <div class="col-sm-6">               -->
+            <mat-card-subtitle>Biography</mat-card-subtitle>
+            <div class="table-responsive">
               <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Aliases</th>
+                    <th>Alignment</th>
+                    <th>AlterEgos</th>
+                    <th>FirstAppearance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {{ selectedArrayDetails.biography.aliases[0] }}</td>
+                    <td> {{ selectedArrayDetails.biography.alignment }}</td>
+                    <td> {{ selectedArrayDetails.biography.alterEgos }}</td>
+                    <td>{{ selectedArrayDetails.biography.firstAppearance }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>FullName</th>
+                    <th>PlaceOfBirth</th>
+                    <th>Publisher</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ selectedArrayDetails.biography.fullName }}</td>
+                    <td>{{ selectedArrayDetails.biography.placeOfBirth }}</td>
+                    <td>{{ selectedArrayDetails.biography.publisher }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <mat-card-subtitle>Appearance</mat-card-subtitle>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Eyecolor</th>
+                    <th>Gender</th>
+                    <th>Haircolor</th>
+                    <th>Race</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {{ selectedArrayDetails.appearance.eyeColor }}</td>
+                    <td> {{ selectedArrayDetails.appearance.gender }}</td>
+                    <td> {{ selectedArrayDetails.appearance.hairColor }}</td>
+                    <td>{{ selectedArrayDetails.appearance.race }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-card-subtitle>Height</mat-card-subtitle>
+              <div class="table-responsive">
+                <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th>Eyecolor</th>
-                      <th>Gender</th>
-                      <th>Haircolor</th>
-                      <th>Race</th>
+                      <th>feet</th>
+                      <th>cm</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td> {{ selectedArrayDetails.appearance.eyeColor }}</td>
-                      <td> {{ selectedArrayDetails.appearance.gender }}</td>
-                      <td> {{ selectedArrayDetails.appearance.hairColor }}</td>
-                      <td>{{ selectedArrayDetails.appearance.race }}</td>
+                      <td> {{ selectedArrayDetails.appearance.height[0] }}</td>
+                      <td> {{ selectedArrayDetails.appearance.height[1] }}</td>
                     </tr>
                   </tbody>
                 </table>
-
+              </div>
             </div>
             <div class="col-sm-6">
-              <!-- <p>Height</p> -->
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>feet</th>
-                    <th>cm</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> {{ selectedArrayDetails.appearance.height[0] }}</td>
-                    <td> {{ selectedArrayDetails.appearance.height[1] }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- <p>Weight</p> -->
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>lb</th>
-                    <th>kg</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> {{ selectedArrayDetails.appearance.weight[0] }}</td>
-                    <td> {{ selectedArrayDetails.appearance.weight[1] }}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <mat-card-subtitle>Weight</mat-card-subtitle>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>lb</th>
+                      <th>kg</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> {{ selectedArrayDetails.appearance.weight[0] }}</td>
+                      <td> {{ selectedArrayDetails.appearance.weight[1] }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
+
+            <!-- </div> -->
+
           </div>
         </mat-card-content>
         <mat-card-actions>
@@ -121,9 +147,6 @@
                       <th>Combat</th>
                       <th>Durability</th>
                       <th>Intelligence</th>
-                      <th>Power</th>
-                      <th>Speed</th>
-                      <th>Strength</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -131,6 +154,21 @@
                       <td> {{ selectedArrayDetails.powerstats.combat }}</td>
                       <td> {{ selectedArrayDetails.powerstats.durability }}</td>
                       <td> {{ selectedArrayDetails.powerstats.intelligence }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Power</th>
+                      <th>Speed</th>
+                      <th>Strength</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
                       <td> {{ selectedArrayDetails.powerstats.power }}</td>
                       <td> {{ selectedArrayDetails.powerstats.speed }}</td>
                       <td> {{ selectedArrayDetails.powerstats.strength }}</td>
