@@ -6,4 +6,13 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
-  
+ 
+  #table{
+    overflow-y:scroll;
+    height:850px;
+    display:block;
+ }
+
+ ::-webkit-scrollbar {
+  display: none;
+}

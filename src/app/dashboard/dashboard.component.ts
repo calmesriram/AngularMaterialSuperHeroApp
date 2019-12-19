@@ -8,7 +8,8 @@ import { ApiService } from '../api.service';
 })
 export class DashboardComponent implements OnInit {
  public getallDetailarray:any=[];
- public getallDetailarray1:any=[1,2,3];
+ public getallDetailarray1:any=[1,2,3,4,5,6,7];
+ public selectedArrayDetails:any=[];
   constructor(public Api:ApiService) { }
 
   ngOnInit() {
@@ -21,5 +22,10 @@ export class DashboardComponent implements OnInit {
       this.getallDetailarray = res;
       console.log(this.getallDetailarray,"array")
     })
+  }
+  selecteditem(data){
+    this.selectedArrayDetails.length=0;
+    this.selectedArrayDetails = data;
+    console.log(this.selectedArrayDetails)
   }
 }
