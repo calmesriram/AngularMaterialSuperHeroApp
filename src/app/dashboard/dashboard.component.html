@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col-sm-9" id="table">
+    <div class="col-sm-8" id="table">
       <div class="row">
         <div class="col-sm-3" *ngFor="let item of getallDetailarray;">
           <div class="card" (click)="selecteditem(item);">
@@ -21,27 +21,140 @@
     </div>
 
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <mat-card class="example-card">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>{{selectedArrayDetails.name}}</mat-card-subtitle>
+          <div mat-card-avatar
+            [ngStyle]="{'background': 'url(' + selectedArrayDetails.images.sm + ') no-repeat 0 0 / cover'}"></div>
+          <mat-card-title>{{selectedArrayDetails.name}}</mat-card-title>
+          <mat-card-subtitle>{{selectedArrayDetails.appearance.gender}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <!-- <img class="img-fluid" src="https://material.angular.io/assets/img/examples/shiba2.jpg"  alt="Chania" width="260" height="145">  -->
         <!-- <img mat-card-image src="{{selectedArrayDetails.images.sm}}" alt="Photo of a Shiba Inu"> -->
         <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
+          <!-- <div class="row">
+            <mat-card-subtitle>Biography</mat-card-subtitle>
+            <br>
+            <dt>Aliases</dt>
+            <span> {{ selectedArrayDetails.biography.aliases[0] }} </span>
+            <dt>Alignment</dt>
+            <dd> {{ selectedArrayDetails.biography.alignment }} </dd>
+            <dt>AlterEgos</dt>
+            <dd> {{ selectedArrayDetails.biography.alterEgos }} </dd>
+            <dt>FirstAppearance</dt>
+            <dd> {{ selectedArrayDetails.biography.firstAppearance }} </dd>
+            <dt>FullName</dt>
+            <dd> {{ selectedArrayDetails.biography.fullName }} </dd>
+            <dt>PlaceOfBirth</dt>
+            <dd> {{ selectedArrayDetails.biography.placeOfBirth }} </dd>
+            <dt>Publisher</dt>
+            <dd> {{ selectedArrayDetails.biography.publisher }} </dd>
+          </div>
+          <br> -->
+          <div class="row">
+            <mat-card-subtitle>Appearance</mat-card-subtitle>
+            <div class="col-sm-6">              
+
+              <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Eyecolor</th>
+                      <th>Gender</th>
+                      <th>Haircolor</th>
+                      <th>Race</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> {{ selectedArrayDetails.appearance.eyeColor }}</td>
+                      <td> {{ selectedArrayDetails.appearance.gender }}</td>
+                      <td> {{ selectedArrayDetails.appearance.hairColor }}</td>
+                      <td>{{ selectedArrayDetails.appearance.race }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+            </div>
+            <div class="col-sm-6">
+              <!-- <p>Height</p> -->
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>feet</th>
+                    <th>cm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {{ selectedArrayDetails.appearance.height[0] }}</td>
+                    <td> {{ selectedArrayDetails.appearance.height[1] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- <p>Weight</p> -->
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>lb</th>
+                    <th>kg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {{ selectedArrayDetails.appearance.weight[0] }}</td>
+                    <td> {{ selectedArrayDetails.appearance.weight[1] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+          <div class="row">
+            <div class="col-sm-12">
+              <mat-card-subtitle>Powerstats</mat-card-subtitle>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Combat</th>
+                      <th>Durability</th>
+                      <th>Intelligence</th>
+                      <th>Power</th>
+                      <th>Speed</th>
+                      <th>Strength</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> {{ selectedArrayDetails.powerstats.combat }}</td>
+                      <td> {{ selectedArrayDetails.powerstats.durability }}</td>
+                      <td> {{ selectedArrayDetails.powerstats.intelligence }}</td>
+                      <td> {{ selectedArrayDetails.powerstats.power }}</td>
+                      <td> {{ selectedArrayDetails.powerstats.speed }}</td>
+                      <td> {{ selectedArrayDetails.powerstats.strength }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </mat-card-actions>
+        <mat-card-footer>
+          <div class="row">
+            <div class="col-sm-12">
+              <dt>Base</dt>
+              <dd> {{ selectedArrayDetails.work.base }} </dd>
+              <dt>Occupation</dt>
+              <dd> {{ selectedArrayDetails.work.occupation }} </dd>
+              <dt>Group Affiliation</dt>
+              <dd> {{ selectedArrayDetails.connections.groupAffiliation }} </dd>
+              <dt>Relatives</dt>
+              <dd> {{ selectedArrayDetails.connections.relatives }} </dd>
+            </div>
+          </div>
+        </mat-card-footer>
       </mat-card>
       <!-- </div> -->
     </div>
