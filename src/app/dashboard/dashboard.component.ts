@@ -8,6 +8,7 @@ import { ApiService } from '../api.service';
 })
 export class DashboardComponent implements OnInit {
  public getallDetailarray:any=[];
+ public getallDetailarray1:any=[1,2,3];
   constructor(public Api:ApiService) { }
 
   ngOnInit() {
