@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
     })
   }
   selecteditem(data){
+    console.log(data,"selected")
     this.selectedArrayDetails.length=0;
     this.selectedArrayDetails = data;
     // console.log(this.selectedArrayDetails)
@@ -39,4 +40,13 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
+
+  getByid(id){
+    console.log(id,"get by id")
+    this.Api.getallDetail_byid(id).then(res=>{
+      console.log(res,"res of get by id")
+      this.selectedArrayDetails= res;
+    })
+  }
+  
 }
