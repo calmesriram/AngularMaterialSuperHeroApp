@@ -29,18 +29,124 @@
         </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" #s placeholder="Search fullName or name" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" (click)="ownfilter(s.value)" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search"matInput [formControl]="myControl" [matAutocomplete]="auto" #s placeholder="Search by Name" aria-label="Search">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option  *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="openDialog1();ownfilter(s.value)" type="submit">Search</button>
     </form>
   </div>
 </nav>
+<!-- <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="filter by name" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form> -->
 <div class="container-fluid">
+  <div class="row">
+      <!-- <h3 class="section-title h1">Marvel</h3> -->
+    <div class="col-sm-12" id="table">
+        <section id="team" class="pb-5">
+            <div class="container">                
+                <div class="row">
+                    <!-- Team member -->
+                    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let item of getallDetailarray;">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside" >
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <p><img class=" img-fluid"  src="{{ item.images.md}}" alt="card image"></p>
+                                            <h4 class="card-title">{{item.name}}</h4>
+                                            <p class="card-text">{{item.biography.fullName || ""}}</p>                                            
+                                            <div>                                                
+                                                <span class="badge badge-info">Occupation</span> {{ item.work.occupation}}
+                                            </div>
+                                            <!-- <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backside" (click)="openDialog(item);">
+                                    <div class="card" >
+                                        <div class="card-body text-center mt-4 ">
+                                            <h4 class="card-title">{{item.name}}</h4>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                  <thead>
+                                                    <tr>
+                                                      <th>Eyecolor</th>
+                                                      <th>Gender</th>
+                                                      <th>Haircolor</th>
+                                                      <th>Race</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr>
+                                                      <td> {{ item.appearance.eyeColor  }}</td>
+                                                      <td> {{ item.appearance.gender  }}</td>
+                                                      <td> {{ item.appearance.hairColor  }}</td>
+                                                      <td>{{ item.appearance.race  }}</td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </div>
+                                           
+                                              <!-- <button mat-button >Open dialog</button> -->
+                                              <div class="form-group">
+                                                <div class="form-inline">
+                                                  <label class="badge badge-info" for="email">Power </label>&nbsp;&nbsp;&nbsp;
+                                                  <span> {{ item.powerstats.power  }}</span>
+                                                </div>
+                                              </div>
+                                
+                                              <div class="form-group">
+                                                <div class="form-inline">
+                                                  <label class="badge badge-info" for="email">Speed </label>&nbsp;&nbsp;&nbsp;
+                                                  <span> {{ item.powerstats.speed  }}</span>
+                                                </div>
+                                              </div>
+                                
+                                              <div class="form-group">
+                                                <div class="form-inline">
+                                                  <label class="badge badge-info" for="email">Strength </label>&nbsp;&nbsp;&nbsp;
+                                                  <span> {{ item.powerstats.strength  }}</span>
+                                                </div>
+                                              </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <br>
+        
+                </div>
+            </div>
+        </section>
+        <!-- Team -->
+        
+    </div>
+  </div>
+</div>
+
+
+<!-- Team -->
+<!-- <div class="container-fluid">
+
   <div class="row">
     <div class="col-sm-8" id="table">
       <div class="row">
         <div class="col-sm-4" *ngFor="let item of getallDetailarray;">
-          <div class="card" (click)="getByid(item.id);">
-              <!-- <div class="card" (click)="getByid(item.id);selecteditem(item);"> -->
+          <div class="card" (click)="getByid(item.id);">              
             <img class="card-img-top" src="{{ item.images.md}}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">{{item.name}}</h5>
@@ -120,8 +226,7 @@
         </mat-card-header>
         <img mat-card-image src="{{selectedArrayDetails.images.md}}" height="250">
         <mat-card-content>
-          <div class="row">
-            <!-- <div class="col-sm-6">               -->
+          <div class="row">            
             <mat-card-subtitle>Biography</mat-card-subtitle>
             <div class="table-responsive">
               <table class="table table-bordered">
@@ -223,7 +328,7 @@
               </div>
             </div>
 
-            <!-- </div> -->
+         
 
           </div>
         </mat-card-content>
@@ -285,7 +390,7 @@
           </div>
         </mat-card-footer>
       </mat-card>
-      <!-- </div> -->
+     
     </div>
   </div>
-</div>
+</div> -->
