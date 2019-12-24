@@ -13,7 +13,10 @@
  
   #table{
     overflow:scroll;
-    height:560px;
+    /* width:100%; */
+    height:90.67vh;
+    padding-top:0%;
+    padding-bottom:2%;
     display:block;
  }
  .example-button-row button,
